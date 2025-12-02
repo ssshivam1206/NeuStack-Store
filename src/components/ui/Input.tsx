@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -8,11 +8,11 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export default function Input({
   label,
   error,
-  className = "",
+  className = '',
   id,
   ...props
 }: InputProps) {
-  const inputId = id || label?.toLowerCase().replace(/\s/g, "-");
+  const inputId = id || label?.toLowerCase().replace(/\s/g, '-');
 
   return (
     <div className="w-full">
@@ -29,7 +29,7 @@ export default function Input({
         className={`
           w-full px-4 py-2 border rounded-lg transition-colors
           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
-          ${error ? "border-red-500" : "border-gray-300"}
+          ${error ? 'border-red-500' : 'border-gray-300'}
           ${className}
         `}
         {...props}

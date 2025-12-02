@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { Product } from "@/types";
-import ProductCard from "./ProductCard";
-import { Loader2 } from "lucide-react";
+import { useEffect, useState } from 'react';
+import { Product } from '@/types';
+import ProductCard from './ProductCard';
+import { Loader2 } from 'lucide-react';
 
 export default function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -13,15 +13,15 @@ export default function ProductList() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch("/api/products");
+        const response = await fetch('/api/products');
         const data = await response.json();
         if (data.success) {
           setProducts(data.data);
         } else {
-          setError("Failed to load products");
+          setError('Failed to load products');
         }
       } catch (err) {
-        setError("Failed to load products");
+        setError('Failed to load products');
       } finally {
         setIsLoading(false);
       }

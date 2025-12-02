@@ -1,15 +1,28 @@
 'use client';
 
-import { Product } from '../../types';
-import { Card, CardContent, CardFooter } from '../ui/Card';
-import Button from '../ui/Button';
+import { Product } from '@/types';
+import { Card, CardContent, CardFooter } from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
 import { ShoppingCart, Package } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
+import { toast } from 'sonner';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart, isLoading } = useCart();
+
+  const handleAddToCart = async () => {
+    const success = await addToCart(product.id, 1);
+    if (success) {
+      toast.success(`${product.name} added to cart`);
+    } else {
+      toast.error('Failed to add item to cart');
+    }
+  };
+
   return (
     <Card className="flex flex-col h-full hover:shadow-lg transition-shadow">
       {/* Product Image Placeholder */}
@@ -42,6 +55,17 @@ export default function ProductCard({ product }: ProductCardProps) {
           </span>
         </div>
       </CardContent>
+
+      <CardFooter>
+        <Button
+          onClick={handleAddToCart}
+          disabled={product.stock === 0 || isLoading}
+          className="w-full"
+        >
+          <ShoppingCart className="h-4 w-4 mr-2" />
+          Add to Cart
+        </Button>
+      </CardFooter>
     </Card>
   );
 }

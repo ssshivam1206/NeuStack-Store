@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { store } from '../../../lib/store';
-import { ApiResponse, Cart } from '../../../types';
+import { store } from '@/lib/store';
+import { ApiResponse, Cart } from '@/types';
 
 // Disable caching for all cart routes
 export const dynamic = 'force-dynamic';

@@ -2,8 +2,11 @@
 
 import Link from 'next/link';
 import { ShoppingCart, Package, LayoutDashboard } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 export default function Header() {
+  const { itemCount } = useCart();
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
@@ -35,6 +38,11 @@ export default function Header() {
             >
               <ShoppingCart className="h-5 w-5" />
               <span>Cart</span>
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
             </Link>
           </nav>
         </div>

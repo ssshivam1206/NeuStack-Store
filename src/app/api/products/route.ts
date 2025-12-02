@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { store } from '../../../lib/store';
-import { ApiResponse, Product } from '../../../types';
+import { store } from '@/lib/store';
+import { ApiResponse, Product } from '@/types';
 
 /**
  * GET /api/products

@@ -30,7 +30,7 @@ export default function RootLayout({
               NeuStack E-Commerce Assignment
             </footer>
           </div>
-          <Toaster position="top-right" richColors />
+          <Toaster position="top-right" richColors offset={72} />
         </CartProvider>
       </body>
     </html>
